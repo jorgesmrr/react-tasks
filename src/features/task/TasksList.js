@@ -1,8 +1,9 @@
 import React from 'react';
 import Task from './Task';
 import { connect } from 'react-redux';
+import { getTasksByList } from './taskSlice';
 
-class TaskList extends React.Component {
+class TasksList extends React.Component {
     render() {
         const tasks = Object.values(this.props.tasks).map(t => <Task key={t.id} id={t.id} />)
 
@@ -10,6 +11,6 @@ class TaskList extends React.Component {
     }
 }
 
-const mapStateToProps = (state) => ({ tasks: state.task.all });
+const mapStateToProps = (state, ownProps) => ({ tasks: getTasksByList(state.tasks, ownProps.listId) });
 
-export default connect(mapStateToProps)(TaskList);
+export default connect(mapStateToProps)(TasksList);

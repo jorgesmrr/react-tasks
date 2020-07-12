@@ -1,14 +1,8 @@
 import React from 'react';
-import NewTask from './features/task/NewTask';
-import TaskList from './features/task/TaskList';
+import Home from './features/home/Home';
 
 function App() {
-  return (
-    <div>
-      <NewTask />
-      <TaskList />
-    </div>
-  );
+  return <Home />;
 }
 
 export default App;
