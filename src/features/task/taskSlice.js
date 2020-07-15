@@ -16,11 +16,14 @@ export const taskSlice = createSlice({
                 text,
                 listId
             };
+        },
+        deleteTask(state, action) {
+            delete state.all[action.payload];
         }
     }
 })
 
-export const { add } = taskSlice.actions;
+export const { add, deleteTask } = taskSlice.actions;
 
 export const getTaskById = (state, id) => state.all[id];
 export const getTasksByList = (state, listId) => Object.values(state.all).filter(t => t.listId === listId);

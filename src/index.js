@@ -5,6 +5,7 @@ import store from './app/store';
 import { Provider } from 'react-redux';
 import * as serviceWorker from './serviceWorker';
 import './styles/main.output.css';
+import './styles/fontawesome-free-5.13.1-web/css/all.css';
 
 ReactDOM.render(
   <React.StrictMode>

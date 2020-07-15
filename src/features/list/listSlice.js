@@ -16,11 +16,17 @@ export const listSlice = createSlice({
         },
         openList(state, action) {
             state.activeListId = action.payload
+        },
+        deleteList(state, action) {
+            if (state.activeListId === action.payload) {
+                state.activeListId = null;
+            }
+            delete state.all[action.payload];
         }
     }
 })
 
-export const { add, openList } = listSlice.actions;
+export const { add, openList, deleteList } = listSlice.actions;
 
 export const getListById = (state, id) => state.all[id];
 
