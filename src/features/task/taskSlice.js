@@ -19,11 +19,14 @@ export const taskSlice = createSlice({
         },
         deleteTask(state, action) {
             delete state.all[action.payload];
+        },
+        toggleTask(state, action) {
+            state.all[action.payload].done = !state.all[action.payload].done;
         }
     }
 })
 
-export const { add, deleteTask } = taskSlice.actions;
+export const { add, deleteTask, toggleTask } = taskSlice.actions;
 
 export const getTaskById = (state, id) => state.all[id];
 export const getTasksByList = (state, listId) => Object.values(state.all).filter(t => t.listId === listId);
