@@ -1,24 +1,19 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { cancelTaskEdit, deleteTask, getEdittedTask, updateTask } from './taskSlice';
+import { deleteTask, updateTask, getTaskById } from './taskSlice';
 import TextField from '../common/TextField';
 
 class TaskManager extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = { text: this.props.task.text };
-    }
-
-    updateText(text) {
-        this.setState({ text })
-    }
+    state = { text: this.props.task.text };
 
     delete() {
-        this.props.deleteTask(this.props.task.id)
+        this.props.deleteTask(this.props.task.id);
+        this.props.onSuccess();
     }
 
     submit() {
-        this.props.updateTask(this.state.text);
+        this.props.updateTask({ id: this.props.task.id, text: this.state.text });
+        this.props.onSuccess();
     }
 
     render() {
@@ -29,7 +24,7 @@ class TaskManager extends React.Component {
                         <TextField
                             label="Description"
                             value={this.state.text}
-                            onChange={text => this.updateText(text)} />
+                            onChange={text => this.setState({ text })} />
                     </div>
                     <div className="card-block flex">
                         <button className="btn btn-danger" onClick={() => this.delete()}>
@@ -38,7 +33,7 @@ class TaskManager extends React.Component {
 
                         <span className="ml-auto" />
 
-                        <button className="btn mr-2" onClick={() => this.props.cancelTaskEdit()}>
+                        <button className="btn mr-2" onClick={() => this.props.onCancel()}>
                             Cancel
                         </button>
                         <button className="btn btn-primary" onClick={() => this.submit()}>
@@ -51,7 +46,7 @@ class TaskManager extends React.Component {
     }
 }
 
-const mapStateToProps = state => ({ task: getEdittedTask(state.tasks) });
-const mapDispatchToProps = { cancelTaskEdit, deleteTask, updateTask };
+const mapStateToProps = (state, ownProps) => ({ task: getTaskById(state.tasks, ownProps.id) });
+const mapDispatchToProps = { deleteTask, updateTask };
 
 export default connect(mapStateToProps, mapDispatchToProps)(TaskManager);

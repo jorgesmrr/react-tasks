@@ -1,12 +1,12 @@
 import React from 'react';
-import { editList, getListById, openList } from './listSlice';
+import { getListById, openList } from './listSlice';
 import { getTasksByList } from './../task/taskSlice';
 import { connect } from 'react-redux';
 
 class List extends React.Component {
-    editList(ev) {
+    onOptionsClick(ev) {
         ev.stopPropagation();
-        this.props.editList(this.props.list.id)
+        this.props.onOptionsClick(this.props.list.id);
     }
 
     renderBadgeCount() {
@@ -20,22 +20,24 @@ class List extends React.Component {
     }
 
     render() {
-        return (
-            <li className="p-2 my-2 flex items-center"
-                onClick={() => this.props.openList(this.props.list.id)}>
-                <i className="fas fa-list mr-2 cursor-pointer" />
+        return this.props.list
+            ? (
+                <li className="flex items-center hover:bg-neutral-1 rounded p-2 mb-2 cursor-pointer"
+                    onClick={() => this.props.openList(this.props.list.id)}>
+                    <i className="fas fa-list mr-2" />
 
-                <span className="mr-auto">
-                    {this.props.list.name}
-                </span>
+                    <span>
+                        {this.props.list.name}
+                    </span>
 
-                <span className="ml-auto" />
+                    <span className="ml-auto" />
 
-                {this.renderBadgeCount()}
-                <i className="fas fa-ellipsis-v px-2"
-                    onClick={ev => this.editList(ev)} />
-            </li>
-        )
+                    {this.renderBadgeCount()}
+                    <i className="fas fa-ellipsis-v hover:text-primary-3 rounded ml-2"
+                        onClick={ev => this.onOptionsClick(ev)} />
+                </li>
+            )
+            : null;
     }
 }
 
@@ -43,6 +45,6 @@ const mapStateToProps = (state, ownProps) => ({
     list: getListById(state.lists, ownProps.id),
     tasksCount: getTasksByList(state.tasks, ownProps.id).filter(t => !t.done).length
 });
-const mapDispatchToProps = { editList, openList };
+const mapDispatchToProps = { openList };
 
 export default connect(mapStateToProps, mapDispatchToProps)(List);

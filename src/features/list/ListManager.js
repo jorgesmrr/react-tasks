@@ -1,24 +1,19 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { cancelListEdit, deleteList, getEdittedList, updateList } from './listSlice';
+import { deleteList, updateList, getListById } from './listSlice';
 import TextField from '../common/TextField';
 
 class ListManager extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = { text: this.props.list.name };
-    }
-
-    updateText(text) {
-        this.setState({ text })
-    }
+    state = { name: this.props.list.name };
 
     delete() {
-        this.props.deleteList(this.props.list.id)
+        this.props.deleteList(this.props.list.id);
+        this.props.onSuccess();
     }
 
     submit() {
-        this.props.updateList(this.state.text);
+        this.props.updateList({ id: this.props.list.id, name: this.state.name });
+        this.props.onSuccess();
     }
 
     render() {
@@ -28,8 +23,8 @@ class ListManager extends React.Component {
                     <div className="card-block">
                         <TextField
                             label="Name"
-                            value={this.state.text}
-                            onChange={text => this.updateText(text)} />
+                            value={this.state.name}
+                            onChange={name => this.setState({ name })} />
                     </div>
                     <div className="card-block flex">
                         <button className="btn btn-danger" onClick={() => this.delete()}>
@@ -38,7 +33,7 @@ class ListManager extends React.Component {
 
                         <span className="ml-auto" />
 
-                        <button className="btn mr-2" onClick={() => this.props.cancelListEdit()}>
+                        <button className="btn mr-2" onClick={() => this.props.onCancel()}>
                             Cancel
                         </button>
                         <button className="btn btn-primary" onClick={() => this.submit()}>
@@ -51,7 +46,7 @@ class ListManager extends React.Component {
     }
 }
 
-const mapStateToProps = state => ({ list: getEdittedList(state.lists) });
-const mapDispatchToProps = { cancelListEdit, deleteList, updateList };
+const mapStateToProps = (state, ownProps) => ({ list: getListById(state.lists, ownProps.id) });
+const mapDispatchToProps = { deleteList, updateList };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ListManager);

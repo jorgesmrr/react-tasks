@@ -17,7 +17,7 @@ class SimpleTextForm extends React.Component {
         return (
             <div className="flex">
                 <TextField
-                    className="mr-2"
+                    className="flex-grow mr-2"
                     value={this.state.text}
                     onChange={text => this.updateText(text)} />
                 <button className="btn" onClick={() => this.submit()}>

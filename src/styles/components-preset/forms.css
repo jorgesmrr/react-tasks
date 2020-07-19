@@ -1,7 +1,7 @@
 /** Basics **/
 
 input, select {
-    @apply rounded border border-neutral-2;
+    @apply rounded border border-neutral-2 w-full;
     @apply px-2 py-1;
 }
 
@@ -25,7 +25,7 @@ input:active, select:active {
 }
 
 .form-group input:not([type=checkbox]):not([type=radio]), .form-group select, .form-group label {
-    @apply inline-block w-full;
+    @apply inline-block;
 }
 
 /** Input Groups **/

@@ -5,7 +5,6 @@ export const listSlice = createSlice({
     initialState: {
         lastId: 0,
         activeListId: null,
-        edittedListId: null,
         all: {}
     },
     reducers: {
@@ -15,14 +14,8 @@ export const listSlice = createSlice({
                 name: action.payload
             };
         },
-        cancelListEdit(state) {
-            state.edittedListId = null;
-        },
         openList(state, action) {
             state.activeListId = action.payload
-        },
-        editList(state, action) {
-            state.edittedListId = action.payload;
         },
         deleteList(state, action) {
             if (state.activeListId === action.payload) {
@@ -31,13 +24,12 @@ export const listSlice = createSlice({
             delete state.all[action.payload];
         },
         updateList(state, action) {
-            state.all[state.edittedListId].name = action.payload;
-            state.edittedListId = null;
+            state.all[action.payload.id].name = action.payload.name;
         },
     }
 })
 
-export const { add, cancelListEdit, openList, editList, deleteList, updateList } = listSlice.actions;
+export const { add, openList, deleteList, updateList } = listSlice.actions;
 
 export const getListById = (state, id) => state.all[id];
 export const getEdittedList = (state) => state.edittedListId ? getListById(state, state.edittedListId) : null;

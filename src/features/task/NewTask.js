@@ -1,11 +1,35 @@
 import React from 'react';
 import { add } from './taskSlice';
 import { connect } from 'react-redux';
-import SimpleTextForm from '../common/SimpleTextForm';
+import TextField from '../common/TextField';
 
 class NewTask extends React.Component {
+    state = { text: '' };
+
+    submit() {
+        this.props.add({ listId: this.props.activeListId, text: this.state.text });
+        this.props.onSuccess();
+    }
+
     render() {
-        return <SimpleTextForm onSubmit={text => this.props.add({ listId: this.props.activeListId, text })} />
+        return (
+            <div>
+                <div className="card-block">
+                    <TextField
+                        label="Description"
+                        value={this.state.text}
+                        onChange={text => this.setState({ text })} />
+                </div>
+                <div className="card-block text-right">
+                    <button className="btn mr-2" onClick={() => this.props.onCancel()}>
+                        Cancel
+                    </button>
+                    <button className="btn btn-primary" onClick={() => this.submit()}>
+                        Save
+                    </button>
+                </div>
+            </div>
+        )
     }
 }
 
