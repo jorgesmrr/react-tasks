@@ -1,15 +1,10 @@
 import React from 'react';
-import { getTaskById, deleteTask, editTask, toggleTask } from './taskSlice';
+import { getTaskById, editTask, toggleTask } from './taskSlice';
 import { connect } from 'react-redux';
 
 class Task extends React.Component {
     editTask() {
         this.props.editTask(this.props.task.id)
-    }
-
-    deleteTask(ev) {
-        ev.stopPropagation();
-        this.props.deleteTask(this.props.task.id)
     }
 
     render() {
@@ -25,13 +20,11 @@ class Task extends React.Component {
 
             <i className="fas fa-ellipsis-v px-2"
                 onClick={() => this.editTask()} />
-            <i className="fas fa-times px-2"
-                onClick={ev => this.deleteTask(ev)} />
         </li >
     }
 }
 
 const mapStateToProps = (state, ownProps) => ({ task: getTaskById(state.tasks, ownProps.id) });
-const mapDispatchToProps = { deleteTask, editTask, toggleTask };
+const mapDispatchToProps = { editTask, toggleTask };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Task);

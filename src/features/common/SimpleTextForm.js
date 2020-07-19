@@ -1,13 +1,11 @@
 import React from 'react';
+import TextField from './TextField';
 
 class SimpleTextForm extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = { text: '' };
-    }
+    state = { text: '' };
 
-    updateText(ev) {
-        this.setState({ text: ev.target.value })
+    updateText(text) {
+        this.setState({ text })
     }
 
     submit() {
@@ -18,7 +16,10 @@ class SimpleTextForm extends React.Component {
     render() {
         return (
             <div className="flex">
-                <input className="mr-2" type="text" value={this.state.text} onChange={ev => this.updateText(ev)} />
+                <TextField
+                    className="mr-2"
+                    value={this.state.text}
+                    onChange={text => this.updateText(text)} />
                 <button className="btn" onClick={() => this.submit()}>
                     Add
                 </button>

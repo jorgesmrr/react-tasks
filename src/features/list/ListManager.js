@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { cancelListEdit, getEdittedList, updateList } from './listSlice';
+import { cancelListEdit, deleteList, getEdittedList, updateList } from './listSlice';
+import TextField from '../common/TextField';
 
 class ListManager extends React.Component {
     constructor(props) {
@@ -8,8 +9,12 @@ class ListManager extends React.Component {
         this.state = { text: this.props.list.name };
     }
 
-    updateText(ev) {
-        this.setState({ text: ev.target.value })
+    updateText(text) {
+        this.setState({ text })
+    }
+
+    delete() {
+        this.props.deleteList(this.props.list.id)
     }
 
     submit() {
@@ -21,10 +26,19 @@ class ListManager extends React.Component {
             ? (
                 <div>
                     <div className="card-block">
-                        <input className="mr-2" type="text" value={this.state.text} onChange={ev => this.updateText(ev)} />
+                        <TextField
+                            label="Name"
+                            value={this.state.text}
+                            onChange={text => this.updateText(text)} />
                     </div>
-                    <div className="card-block text-right">
-                        <button className="btn" onClick={() => this.props.cancelListEdit()}>
+                    <div className="card-block flex">
+                        <button className="btn btn-danger" onClick={() => this.delete()}>
+                            Delete
+                        </button>
+
+                        <span className="ml-auto" />
+
+                        <button className="btn mr-2" onClick={() => this.props.cancelListEdit()}>
                             Cancel
                         </button>
                         <button className="btn btn-primary" onClick={() => this.submit()}>
@@ -38,6 +52,6 @@ class ListManager extends React.Component {
 }
 
 const mapStateToProps = state => ({ list: getEdittedList(state.lists) });
-const mapDispatchToProps = { cancelListEdit, updateList };
+const mapDispatchToProps = { cancelListEdit, deleteList, updateList };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ListManager);
