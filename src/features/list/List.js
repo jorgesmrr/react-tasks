@@ -22,7 +22,7 @@ class List extends React.Component {
     render() {
         return this.props.list
             ? (
-                <li className="flex items-center hover:bg-neutral-1 rounded p-2 mb-2 cursor-pointer"
+                <li className={`flex items-center hover:bg-neutral-1 rounded p-2 mb-2 cursor-pointer ${this.props.isActive ? 'bg-primary-1' : ''}`}
                     onClick={() => this.props.openList(this.props.list.id)}>
                     <i className="fas fa-list mr-2" />
 
@@ -43,6 +43,7 @@ class List extends React.Component {
 
 const mapStateToProps = (state, ownProps) => ({
     list: getListById(state.lists, ownProps.id),
+    isActive: ownProps.id == state.lists.activeListId,
     tasksCount: getTasksByList(state.tasks, ownProps.id).filter(t => !t.done).length
 });
 const mapDispatchToProps = { openList };

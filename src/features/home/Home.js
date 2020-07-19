@@ -11,7 +11,7 @@ class Home extends React.Component {
                     <TasksList listId={this.props.activeListId} />
                 </div>
             )
-            : <p>Select a list</p>;
+            : <p className="text-neutral-3">Select a list</p>;
     }
 
     render() {
@@ -22,6 +22,7 @@ class Home extends React.Component {
                         <ListsList />
                     </div>
 
+                    {this.renderTasks()}
                 </div>
             </div>
         )

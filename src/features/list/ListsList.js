@@ -43,11 +43,11 @@ class ListsList extends React.Component {
     }
 
     render() {
-        const lists = Object.values(this.props.lists).map(l => (
+        const lists = Object.keys(this.props.lists).map(listId => (
             <List
-                key={l.id}
-                id={l.id}
-                onOptionsClick={() => this.editList(l.id)} />
+                key={listId}
+                id={listId}
+                onOptionsClick={() => this.editList(listId)} />
         ))
 
         return (
