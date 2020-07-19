@@ -3,7 +3,7 @@ import List from './List';
 import { connect } from 'react-redux';
 import Modal from '../common/Modal';
 import ListManager from './ListManager';
-import NewList from './NewList';
+import NewList from './ListCreator';
 import PrimaryListItem from '../common/PrimaryListItem';
 
 class ListsList extends React.Component {

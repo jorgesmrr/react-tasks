@@ -3,7 +3,7 @@ import Task from './Task';
 import { connect } from 'react-redux';
 import { getDoneTasksByList, getUndoneTasksByList } from './taskSlice';
 import Modal from '../common/Modal';
-import NewTask from './NewTask';
+import NewTask from './TaskCreator';
 import TaskManager from './TaskManager';
 import PrimaryListItem from '../common/PrimaryListItem';
 
