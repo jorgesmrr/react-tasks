@@ -5,6 +5,7 @@ import Modal from '../common/Modal';
 import ListManager from './ListManager';
 import NewList from './ListCreator';
 import PrimaryListItem from '../common/PrimaryListItem';
+import { getListsIds } from './listSlice';
 
 class ListsList extends React.Component {
     state = { createList: false, edittedListId: null };
@@ -43,7 +44,7 @@ class ListsList extends React.Component {
     }
 
     render() {
-        const lists = Object.keys(this.props.lists).map(listId => Number(listId)).map(listId => (
+        const lists = this.props.listsIds.map(listId => (
             <List
                 key={listId}
                 id={listId}
@@ -78,6 +79,6 @@ class ListsList extends React.Component {
     }
 }
 
-const mapStateToProps = (state) => ({ lists: state.lists.all });
+const mapStateToProps = (state) => ({ listsIds: getListsIds(state.lists) });
 
 export default connect(mapStateToProps)(ListsList);

@@ -32,9 +32,8 @@ export const taskSlice = createSlice({
 export const { add, deleteTask, toggleTask, updateTask } = taskSlice.actions;
 
 export const getTaskById = (state, id) => state.all[id];
-export const getTasksByList = (state, listId) => Object.values(state.all).filter(t => t.listId === listId);
+export const getTasksByList = (state, listId) => Object.values(state.all).filter(t => t.listId === listId).reverse();
 export const getDoneTasksByList = (state, listId) => getTasksByList(state, listId).filter(t => t.done);
 export const getUndoneTasksByList = (state, listId) => getTasksByList(state, listId).filter(t => !t.done);
-export const getEdittedTask = (state) => state.edittedTaskId ? getTaskById(state, state.edittedTaskId) : null;
 
 export default taskSlice.reducer;

@@ -31,7 +31,7 @@ export const listSlice = createSlice({
 
 export const { add, openList, deleteList, updateList } = listSlice.actions;
 
+export const getListsIds = state => Object.keys(state.all).map(listId => Number(listId)).reverse();
 export const getListById = (state, id) => state.all[id];
-export const getEdittedList = (state) => state.edittedListId ? getListById(state, state.edittedListId) : null;
 
 export default listSlice.reducer;
