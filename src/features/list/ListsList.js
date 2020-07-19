@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import Modal from '../common/Modal';
 import ListManager from './ListManager';
 import NewList from './NewList';
-import { PrimaryListItem } from '../common/PrimaryListItem';
+import PrimaryListItem from '../common/PrimaryListItem';
 
 class ListsList extends React.Component {
     state = { createList: false, edittedListId: null };
@@ -43,7 +43,7 @@ class ListsList extends React.Component {
     }
 
     render() {
-        const lists = Object.keys(this.props.lists).map(listId => (
+        const lists = Object.keys(this.props.lists).map(listId => Number(listId)).map(listId => (
             <List
                 key={listId}
                 id={listId}
@@ -53,12 +53,12 @@ class ListsList extends React.Component {
         return (
             <div>
                 <ul>
-                    {lists}
-
                     <PrimaryListItem
                         icon="fas fa-plus"
                         title="Create new list..."
                         onClick={() => this.createList()} />
+
+                    {lists}
                 </ul>
 
                 <Modal

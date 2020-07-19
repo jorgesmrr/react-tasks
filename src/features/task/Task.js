@@ -9,7 +9,7 @@ class Task extends React.Component {
 
     render() {
         return <li className="bg-neutral-2 rounded p-2 mb-2 flex items-center">
-            <i className={`${this.props.task.done ? 'fas' : 'far'} fa-check-circle mr-2 cursor-pointer`}
+            <i className={`${this.props.task.done ? 'fas' : 'far'} fa-check-circle mr-2 cursor-pointer hover:text-primary-3`}
                 onClick={() => this.props.toggleTask(this.props.id)} />
 
             <span>

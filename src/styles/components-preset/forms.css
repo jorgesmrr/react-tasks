@@ -1,8 +1,12 @@
 /** Basics **/
 
 input, select {
-    @apply rounded border border-neutral-2 w-full;
+    @apply rounded border border-neutral-2;
     @apply px-2 py-1;
+}
+
+input:not([type=checkbox]):not([type=radio]), select {
+    @apply w-full;
 }
 
 input:hover, select:hover {

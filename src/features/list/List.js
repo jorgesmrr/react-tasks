@@ -43,7 +43,7 @@ class List extends React.Component {
 
 const mapStateToProps = (state, ownProps) => ({
     list: getListById(state.lists, ownProps.id),
-    isActive: ownProps.id == state.lists.activeListId,
+    isActive: ownProps.id === state.lists.activeListId,
     tasksCount: getTasksByList(state.tasks, ownProps.id).filter(t => !t.done).length
 });
 const mapDispatchToProps = { openList };

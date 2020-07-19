@@ -1,14 +1,14 @@
 import React from 'react';
 import Task from './Task';
 import { connect } from 'react-redux';
-import { getTasksByList } from './taskSlice';
+import { getDoneTasksByList, getUndoneTasksByList } from './taskSlice';
 import Modal from '../common/Modal';
 import NewTask from './NewTask';
 import TaskManager from './TaskManager';
-import { PrimaryListItem } from '../common/PrimaryListItem';
+import PrimaryListItem from '../common/PrimaryListItem';
 
 class TasksList extends React.Component {
-    state = { createTask: false, edittedTaskId: null };
+    state = { createTask: false, edittedTaskId: null, showDone: false };
 
     createTask() {
         this.setState({ createTask: true });
@@ -44,22 +44,42 @@ class TasksList extends React.Component {
     }
 
     render() {
-        const tasks = Object.keys(this.props.tasks).map(taskId => (
+        const undoneTasks = this.props.undoneTasks.map(t => (
             <Task
-                key={taskId}
-                id={taskId}
-                onOptionsClick={() => this.editTask(taskId)} />
+                key={t.id}
+                id={t.id}
+                onOptionsClick={() => this.editTask(t.id)} />
         ))
+
+        const doneTasks = this.state.showDone
+            ? this.props.doneTasks.map(t => (
+                <Task
+                    key={t.id}
+                    id={t.id}
+                    onOptionsClick={() => this.editTask(t.id)} />
+            ))
+            : null;
+
+        const doneToggle = this.props.doneTasks.length
+            ? <PrimaryListItem
+                icon={`fas ${this.state.showDone ? 'fa-chevron-down' : 'fa-chevron-right'}`}
+                title="Show completed"
+                onClick={() => this.setState({ showDone: !this.state.showDone })} />
+            : null;
 
         return (
             <div>
                 <ul>
-                    {tasks}
-
                     <PrimaryListItem
                         icon="fas fa-plus"
                         title="Create new task..."
                         onClick={() => this.createTask()} />
+
+                    {undoneTasks}
+
+                    {doneToggle}
+
+                    {doneTasks}
                 </ul>
 
                 <Modal
@@ -78,6 +98,9 @@ class TasksList extends React.Component {
     }
 }
 
-const mapStateToProps = (state, ownProps) => ({ tasks: getTasksByList(state.tasks, ownProps.listId) });
+const mapStateToProps = (state, ownProps) => ({
+    doneTasks: getDoneTasksByList(state.tasks, ownProps.listId),
+    undoneTasks: getUndoneTasksByList(state.tasks, ownProps.listId)
+});
 
 export default connect(mapStateToProps)(TasksList);

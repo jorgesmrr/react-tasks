@@ -6,12 +6,8 @@ import { connect } from 'react-redux';
 class Home extends React.Component {
     renderTasks() {
         return this.props.activeListId
-            ? (
-                <div className="ml-2 w-1/2">
-                    <TasksList listId={this.props.activeListId} />
-                </div>
-            )
-            : <p className="text-neutral-3">Select a list</p>;
+            ? <TasksList listId={this.props.activeListId} />
+            : <p className="text-neutral-3 p-2">Select a list</p>;
     }
 
     render() {
@@ -19,10 +15,14 @@ class Home extends React.Component {
             <div className="content-medium mt-16">
                 <div className="flex">
                     <div className="mr-2 w-1/2">
+                        <h1 className="mb-6">Lists</h1>
                         <ListsList />
                     </div>
 
-                    {this.renderTasks()}
+                    <div className="mr-2 w-1/2">
+                        <h1 className="mb-6"> Tasks</h1>
+                        {this.renderTasks()}
+                    </div>
                 </div>
             </div>
         )
