@@ -41,6 +41,7 @@
     ]
   },
   "devDependencies": {
+    "cypress": "^4.11.0",
     "tailwindcss": "^1.4.6"
   }
 }

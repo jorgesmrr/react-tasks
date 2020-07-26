@@ -18,13 +18,16 @@ class NewTask extends React.Component {
                     <TextField
                         label="Description"
                         value={this.state.text}
+                        data-test="newTaskName"
                         onChange={text => this.setState({ text })} />
                 </div>
                 <div className="card-block text-right">
                     <button className="btn mr-2" onClick={() => this.props.onCancel()}>
                         Cancel
                     </button>
-                    <button className="btn btn-primary" onClick={() => this.submit()}>
+                    <button className="btn btn-primary"
+                        data-test="newTaskSubmit"
+                        onClick={() => this.submit()}>
                         Save
                     </button>
                 </div>

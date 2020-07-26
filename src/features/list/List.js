@@ -23,7 +23,8 @@ class List extends React.Component {
         return this.props.list
             ? (
                 <li className={`flex items-center hover:bg-neutral-1 rounded p-2 mb-2 cursor-pointer ${this.props.isActive ? 'bg-primary-1' : ''}`}
-                    onClick={() => this.props.openList(this.props.list.id)}>
+                    onClick={() => this.props.openList(this.props.list.id)}
+                    data-test="list">
                     <i className="fas fa-list mr-2" />
 
                     <span>
@@ -34,6 +35,7 @@ class List extends React.Component {
 
                     {this.renderBadgeCount()}
                     <i className="fas fa-ellipsis-v hover:text-primary-3 rounded ml-2"
+                        data-test="listEdit"
                         onClick={ev => this.onOptionsClick(ev)} />
                 </li>
             )

@@ -27,16 +27,20 @@ class ListManager extends React.Component {
                             onChange={name => this.setState({ name })} />
                     </div>
                     <div className="card-block flex">
-                        <button className="btn btn-danger" onClick={() => this.delete()}>
+                        <button className="btn btn-danger"
+                            data-test="listDelete"
+                            onClick={() => this.delete()}>
                             Delete
                         </button>
 
                         <span className="ml-auto" />
 
-                        <button className="btn mr-2" onClick={() => this.props.onCancel()}>
+                        <button className="btn mr-2"
+                            onClick={() => this.props.onCancel()}>
                             Cancel
                         </button>
-                        <button className="btn btn-primary" onClick={() => this.submit()}>
+                        <button className="btn btn-primary"
+                            onClick={() => this.submit()}>
                             Save
                         </button>
                     </div>

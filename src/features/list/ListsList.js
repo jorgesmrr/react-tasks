@@ -57,6 +57,7 @@ class ListsList extends React.Component {
                     <PrimaryListItem
                         icon="fas fa-plus"
                         title="Create new list..."
+                        data-test="listCreate"
                         onClick={() => this.createList()} />
 
                     {lists}

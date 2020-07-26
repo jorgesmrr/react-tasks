@@ -73,6 +73,7 @@ class TasksList extends React.Component {
                     <PrimaryListItem
                         icon="fas fa-plus"
                         title="Create new task..."
+                        data-test="taskCreate"
                         onClick={() => this.createTask()} />
 
                     {undoneTasks}

@@ -8,19 +8,23 @@ class Task extends React.Component {
     }
 
     render() {
-        return <li className="bg-neutral-2 rounded p-2 mb-2 flex items-center">
-            <i className={`${this.props.task.done ? 'fas' : 'far'} fa-check-circle mr-2 cursor-pointer hover:text-primary-3`}
-                onClick={() => this.props.toggleTask(this.props.id)} />
+        return (
+            <li className="bg-neutral-2 rounded p-2 mb-2 flex items-center"
+                data-test="task">
+                <i className={`${this.props.task.done ? 'fas' : 'far'} fa-check-circle mr-2 cursor-pointer hover:text-primary-3`}
+                    onClick={() => this.props.toggleTask(this.props.id)} />
 
-            <span>
-                {this.props.task.text}
-            </span>
+                <span>
+                    {this.props.task.text}
+                </span>
 
-            <span className="ml-auto" />
+                <span className="ml-auto" />
 
-            <i className="fas fa-ellipsis-v hover:text-primary-3 rounded cursor-pointer"
-                onClick={() => this.props.onOptionsClick()} />
-        </li >
+                <i className="fas fa-ellipsis-v hover:text-primary-3 rounded cursor-pointer"
+                    data-test="taskEdit"
+                    onClick={() => this.props.onOptionsClick()} />
+            </li >
+        )
     }
 }
 
