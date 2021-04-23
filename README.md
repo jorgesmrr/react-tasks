@@ -2,10 +2,15 @@
 
 [![React Tasks](https://raw.githubusercontent.com/jorgesmrr/react-tasks/master/preview.jpg?sanitize=true&raw=true)]()
 
-Simple tasks app I made to learn how to manage state in React.
+A simple to-do app made with React.
 
-What I used:
-- <a href="https://reactjs.org/" target="_blank">React</a>
-- <a href="https://redux.js.org/" target="_blank">Redux</a>
-- <a href="https://redux-toolkit.js.org/" target="_blank">Redux Toolkit</a>
-- <a href="https://tailwindcss.com/" target="_blank">Tailwind CSS</a>
+## Warning
+
+This project is just an experiment to learn new things :)
+
+## What I used?
+
+-   [React](https://reactjs.org/)
+-   [React Redux](https://react-redux.js.org/)
+-   [Cypress](https://www.cypress.io/)
+-   [Tailwind CSS](https://tailwindcss.com/)
