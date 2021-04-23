@@ -8,6 +8,10 @@ A simple to-do app made with React.
 
 This project is just an experiment to learn new things :)
 
+## See it working
+
+Open the [live demo](https://xenodochial-sinoussi-55ac44.netlify.app/).
+
 ## What I used?
 
 -   [React](https://reactjs.org/)
