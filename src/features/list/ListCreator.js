@@ -1,10 +1,11 @@
-import React from 'react';
-import { add } from './listSlice';
-import { connect } from 'react-redux';
-import TextField from '../common/TextField';
+import React from "react";
+import { add } from "./listSlice";
+import { connect } from "react-redux";
+import Field from "@bit/jorgemoreira.headless-react.input.field";
+import TextField from "@bit/jorgemoreira.headless-react.input.text-field";
 
 class NewList extends React.Component {
-    state = { name: '' };
+    state = { name: "" };
 
     submit() {
         this.props.add(this.state.name);
@@ -15,24 +16,32 @@ class NewList extends React.Component {
         return (
             <div>
                 <div className="card-block">
-                    <TextField
-                        label="Name"
-                        value={this.state.name}
-                        data-test="newListName"
-                        onChange={name => this.setState({ name })} />
+                    <Field label="Name">
+                        <TextField
+                            autoFocus
+                            value={this.state.name}
+                            data-test="newListName"
+                            onChange={(name) => this.setState({ name })}
+                        />
+                    </Field>
                 </div>
-                <div className="card-block text-right">
-                    <button className="btn mr-2" onClick={() => this.props.onCancel()}>
+                <div className="text-right card-block">
+                    <button
+                        className="mr-2 btn"
+                        onClick={() => this.props.onCancel()}
+                    >
                         Cancel
                     </button>
-                    <button className="btn btn-primary"
+                    <button
+                        className="btn btn-primary"
                         data-test="newListSubmit"
-                        onClick={() => this.submit()}>
+                        onClick={() => this.submit()}
+                    >
                         Save
                     </button>
                 </div>
             </div>
-        )
+        );
     }
 }
 

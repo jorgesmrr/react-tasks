@@ -1,8 +1,8 @@
-import React from 'react';
-import Home from './features/home/Home';
+import React from "react";
+import Home from "./features/home/Home";
 
 function App() {
-  return <Home />;
+    return <Home />;
 }
 
 export default App;

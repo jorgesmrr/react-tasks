@@ -1,34 +1,30 @@
-import React from 'react';
-import { getTaskById, toggleTask } from './taskSlice';
-import { connect } from 'react-redux';
+import React from "react";
+import { getTaskById, toggleTask } from "./taskSlice";
+import { connect } from "react-redux";
+import ListItem from "../common/ListItem";
 
 class Task extends React.Component {
     editTask() {
-        this.props.editTask(this.props.task.id)
+        this.props.editTask(this.props.task.id);
     }
 
     render() {
         return (
-            <li className="bg-neutral-2 rounded p-2 mb-2 flex items-center"
-                data-test="task">
-                <i className={`${this.props.task.done ? 'fas' : 'far'} fa-check-circle mr-2 cursor-pointer hover:text-primary-3`}
-                    onClick={() => this.props.toggleTask(this.props.id)} />
-
-                <span>
-                    {this.props.task.text}
-                </span>
-
-                <span className="ml-auto" />
-
-                <i className="fas fa-ellipsis-v hover:text-primary-3 rounded cursor-pointer"
-                    data-test="taskEdit"
-                    onClick={() => this.props.onOptionsClick()} />
-            </li >
-        )
+            <ListItem
+                icon={`${this.props.task.done ? "fas" : "far"} fa-check-circle`}
+                title={this.props.task.text}
+                dataTest="task"
+                optionsDataTest="taskEdit"
+                onClick={() => this.props.toggleTask(this.props.id)}
+                onOptionsClick={() => this.props.onOptionsClick()}
+            />
+        );
     }
 }
 
-const mapStateToProps = (state, ownProps) => ({ task: getTaskById(state.tasks, ownProps.id) });
+const mapStateToProps = (state, ownProps) => ({
+    task: getTaskById(state.tasks, ownProps.id),
+});
 const mapDispatchToProps = { toggleTask };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Task);

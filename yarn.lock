@@ -1500,18 +1500,41 @@
   resolved "https://registry.yarnpkg.com/@bcoe/v8-coverage/-/v8-coverage-0.2.3.tgz#75a2e8b51cb758a7553d6804a5932d7aace75c39"
   integrity sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==
 
-"@bit/jorgemoreira.headless-react.surface.master-detail@^0.0.1":
+"@bit/jorgemoreira.headless-react.input.field@^0.0.1":
   version "0.0.1"
-  resolved "https://node.bit.dev/jorgemoreira.headless-react.surface.master-detail/-/jorgemoreira.headless-react.surface.master-detail-0.0.1.tgz#625c546d0821e8347d8f230a22d631ffe66fa384"
-  integrity sha1-YlxUbQgh6DR9jyMKItYx/+Zvo4Q=
+  resolved "https://node.bit.dev/jorgemoreira.headless-react.input.field/-/jorgemoreira.headless-react.input.field-0.0.1.tgz#28208a40979e7d37ad1350a17115820fc45355c3"
+  integrity sha1-KCCKQJeefTetE1ChcRWCD8RTVcM=
+  dependencies:
+    "@types/react" "^16.9.0"
+
+"@bit/jorgemoreira.headless-react.input.text-field@^0.0.2":
+  version "0.0.2"
+  resolved "https://node.bit.dev/jorgemoreira.headless-react.input.text-field/-/jorgemoreira.headless-react.input.text-field-0.0.2.tgz#228c0e44e5faf28c177df15946eace7acdf32c40"
+  integrity sha1-IowOROX68owXffFZRurOes3zLEA=
   dependencies:
     "@types/react" "^16.9.0"
     classnames "^2.3.1"
 
-"@bit/jorgemoreira.headless.styles@^0.0.2":
+"@bit/jorgemoreira.headless-react.surface.master-detail@^0.0.2":
   version "0.0.2"
-  resolved "https://node.bit.dev/jorgemoreira.headless.styles/-/jorgemoreira.headless.styles-0.0.2.tgz#469afe5942f4c10e22a2aa6452152a6b0df54599"
-  integrity sha1-Rpr+WUL0wQ4ioqpkUhUqaw31RZk=
+  resolved "https://node.bit.dev/jorgemoreira.headless-react.surface.master-detail/-/jorgemoreira.headless-react.surface.master-detail-0.0.2.tgz#ff86e21f7cb28aeb4aa37131f09ef81686cfe841"
+  integrity sha1-/4biH3yyiutKo3Ex8J74FobP6EE=
+  dependencies:
+    "@types/react" "^16.9.0"
+    classnames "^2.3.1"
+
+"@bit/jorgemoreira.headless-react.surface.modal@^0.0.1":
+  version "0.0.1"
+  resolved "https://node.bit.dev/jorgemoreira.headless-react.surface.modal/-/jorgemoreira.headless-react.surface.modal-0.0.1.tgz#f5e6decaf6b62299ca2ab88653c71fdd93299c9c"
+  integrity sha1-9ebeyva2IpnKKriGU8cf3ZMpnJw=
+  dependencies:
+    "@types/react" "^16.9.0"
+    "@types/react-dom" "^16.9.0"
+
+"@bit/jorgemoreira.headless.styles@^0.0.4":
+  version "0.0.4"
+  resolved "https://node.bit.dev/jorgemoreira.headless.styles/-/jorgemoreira.headless.styles-0.0.4.tgz#8022e82f960129b4ec2b97f0436d4cc266db1962"
+  integrity sha1-gCLoL5YBKbTsK5fwQ21MwmbbGWI=
 
 "@cnakazawa/watch@^1.0.3":
   version "1.0.4"
@@ -2301,6 +2324,13 @@
   dependencies:
     "@types/react" "*"
 
+"@types/react-dom@^16.9.0":
+  version "16.9.13"
+  resolved "https://registry.yarnpkg.com/@types/react-dom/-/react-dom-16.9.13.tgz#5898f0ee68fe200685e6b61d3d7d8828692814d0"
+  integrity sha512-34Hr3XnmUSJbUVDxIw/e7dhQn2BJZhJmlAaPyPwfTQyuVS9mV/CeyghFcXyvkJXxI7notQJz8mF8FeCVvloJrA==
+  dependencies:
+    "@types/react" "^16"
+
 "@types/react-redux@^7.1.16":
   version "7.1.16"
   resolved "https://registry.yarnpkg.com/@types/react-redux/-/react-redux-7.1.16.tgz#0fbd04c2500c12105494c83d4a3e45c084e3cb21"
@@ -2319,7 +2349,7 @@
     "@types/prop-types" "*"
     csstype "^2.2.0"
 
-"@types/react@^16.9.0":
+"@types/react@^16", "@types/react@^16.9.0":
   version "16.14.6"
   resolved "https://registry.yarnpkg.com/@types/react/-/react-16.14.6.tgz#d933a2a6bc1bfe320a5eea480e8f45ba8126d6ee"
   integrity sha512-Ol/aFKune+P0FSFKIgf+XbhGzYGyz0p7g5befSt4rmbzfGLaZR0q7jPew9k7d3bvrcuaL8dPy9Oz3XGZmf9n+w==

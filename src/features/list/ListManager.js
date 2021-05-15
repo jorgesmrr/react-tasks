@@ -1,7 +1,8 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import { deleteList, updateList, getListById } from './listSlice';
-import TextField from '../common/TextField';
+import React from "react";
+import { connect } from "react-redux";
+import { deleteList, updateList, getListById } from "./listSlice";
+import Field from "@bit/jorgemoreira.headless-react.input.field";
+import TextField from "@bit/jorgemoreira.headless-react.input.text-field";
 
 class ListManager extends React.Component {
     state = { name: this.props.list.name };
@@ -12,45 +13,57 @@ class ListManager extends React.Component {
     }
 
     submit() {
-        this.props.updateList({ id: this.props.list.id, name: this.state.name });
+        this.props.updateList({
+            id: this.props.list.id,
+            name: this.state.name,
+        });
         this.props.onSuccess();
     }
 
     render() {
-        return this.props.list
-            ? (
-                <div>
-                    <div className="card-block">
+        return this.props.list ? (
+            <div>
+                <div className="card-block">
+                    <Field label="Name">
                         <TextField
-                            label="Name"
+                            autoFocus
                             value={this.state.name}
-                            onChange={name => this.setState({ name })} />
-                    </div>
-                    <div className="card-block flex">
-                        <button className="btn btn-danger"
-                            data-test="listDelete"
-                            onClick={() => this.delete()}>
-                            Delete
-                        </button>
-
-                        <span className="ml-auto" />
-
-                        <button className="btn mr-2"
-                            onClick={() => this.props.onCancel()}>
-                            Cancel
-                        </button>
-                        <button className="btn btn-primary"
-                            onClick={() => this.submit()}>
-                            Save
-                        </button>
-                    </div>
+                            onChange={(name) => this.setState({ name })}
+                        />
+                    </Field>
                 </div>
-            )
-            : null;
+                <div className="flex card-block">
+                    <button
+                        className="btn btn-danger"
+                        data-test="listDelete"
+                        onClick={() => this.delete()}
+                    >
+                        Delete
+                    </button>
+
+                    <span className="ml-auto" />
+
+                    <button
+                        className="mr-2 btn"
+                        onClick={() => this.props.onCancel()}
+                    >
+                        Cancel
+                    </button>
+                    <button
+                        className="btn btn-primary"
+                        onClick={() => this.submit()}
+                    >
+                        Save
+                    </button>
+                </div>
+            </div>
+        ) : null;
     }
 }
 
-const mapStateToProps = (state, ownProps) => ({ list: getListById(state.lists, ownProps.id) });
+const mapStateToProps = (state, ownProps) => ({
+    list: getListById(state.lists, ownProps.id),
+});
 const mapDispatchToProps = { deleteList, updateList };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ListManager);

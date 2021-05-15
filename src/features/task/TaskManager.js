@@ -1,7 +1,8 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import { deleteTask, updateTask, getTaskById } from './taskSlice';
-import TextField from '../common/TextField';
+import React from "react";
+import { connect } from "react-redux";
+import { deleteTask, updateTask, getTaskById } from "./taskSlice";
+import Field from "@bit/jorgemoreira.headless-react.input.field";
+import TextField from "@bit/jorgemoreira.headless-react.input.text-field";
 
 class TaskManager extends React.Component {
     state = { text: this.props.task.text };
@@ -12,45 +13,57 @@ class TaskManager extends React.Component {
     }
 
     submit() {
-        this.props.updateTask({ id: this.props.task.id, text: this.state.text });
+        this.props.updateTask({
+            id: this.props.task.id,
+            text: this.state.text,
+        });
         this.props.onSuccess();
     }
 
     render() {
-        return this.props.task
-            ? (
-                <div>
-                    <div className="card-block">
+        return this.props.task ? (
+            <div>
+                <div className="card-block">
+                    <Field label="Description">
                         <TextField
-                            label="Description"
+                            autoFocus
                             value={this.state.text}
-                            onChange={text => this.setState({ text })} />
-                    </div>
-                    <div className="card-block flex">
-                        <button className="btn btn-danger"
-                            data-test="taskDelete"
-                            onClick={() => this.delete()}>
-                            Delete
-                        </button>
-
-                        <span className="ml-auto" />
-
-                        <button className="btn mr-2"
-                            onClick={() => this.props.onCancel()}>
-                            Cancel
-                        </button>
-                        <button className="btn btn-primary"
-                            onClick={() => this.submit()}>
-                            Save
-                        </button>
-                    </div>
+                            onChange={(text) => this.setState({ text })}
+                        />
+                    </Field>
                 </div>
-            )
-            : null;
+                <div className="flex card-block">
+                    <button
+                        className="btn btn-danger"
+                        data-test="taskDelete"
+                        onClick={() => this.delete()}
+                    >
+                        Delete
+                    </button>
+
+                    <span className="ml-auto" />
+
+                    <button
+                        className="mr-2 btn"
+                        onClick={() => this.props.onCancel()}
+                    >
+                        Cancel
+                    </button>
+                    <button
+                        className="btn btn-primary"
+                        onClick={() => this.submit()}
+                    >
+                        Save
+                    </button>
+                </div>
+            </div>
+        ) : null;
     }
 }
 
-const mapStateToProps = (state, ownProps) => ({ task: getTaskById(state.tasks, ownProps.id) });
+const mapStateToProps = (state, ownProps) => ({
+    task: getTaskById(state.tasks, ownProps.id),
+});
 const mapDispatchToProps = { deleteTask, updateTask };
 
 export default connect(mapStateToProps, mapDispatchToProps)(TaskManager);

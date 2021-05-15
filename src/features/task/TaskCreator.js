@@ -1,13 +1,17 @@
-import React from 'react';
-import { add } from './taskSlice';
-import { connect } from 'react-redux';
-import TextField from '../common/TextField';
+import React from "react";
+import { add } from "./taskSlice";
+import { connect } from "react-redux";
+import Field from "@bit/jorgemoreira.headless-react.input.field";
+import TextField from "@bit/jorgemoreira.headless-react.input.text-field";
 
 class NewTask extends React.Component {
-    state = { text: '' };
+    state = { text: "" };
 
     submit() {
-        this.props.add({ listId: this.props.activeListId, text: this.state.text });
+        this.props.add({
+            listId: this.props.activeListId,
+            text: this.state.text,
+        });
         this.props.onSuccess();
     }
 
@@ -15,24 +19,33 @@ class NewTask extends React.Component {
         return (
             <div>
                 <div className="card-block">
-                    <TextField
-                        label="Description"
-                        value={this.state.text}
-                        data-test="newTaskName"
-                        onChange={text => this.setState({ text })} />
+                    <Field label="Description">
+                        <TextField
+                            autoFocus
+                            label="Description"
+                            value={this.state.text}
+                            data-test="newTaskName"
+                            onChange={(text) => this.setState({ text })}
+                        />
+                    </Field>
                 </div>
                 <div className="card-block text-right">
-                    <button className="btn mr-2" onClick={() => this.props.onCancel()}>
+                    <button
+                        className="btn mr-2"
+                        onClick={() => this.props.onCancel()}
+                    >
                         Cancel
                     </button>
-                    <button className="btn btn-primary"
+                    <button
+                        className="btn btn-primary"
                         data-test="newTaskSubmit"
-                        onClick={() => this.submit()}>
+                        onClick={() => this.submit()}
+                    >
                         Save
                     </button>
                 </div>
             </div>
-        )
+        );
     }
 }
 
