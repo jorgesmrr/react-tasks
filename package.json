@@ -7,9 +7,9 @@
     "dependencies": {
         "@bit/jorgemoreira.headless-react.input.field": "^0.0.1",
         "@bit/jorgemoreira.headless-react.input.text-field": "^0.0.2",
-        "@bit/jorgemoreira.headless-react.surface.master-detail": "^0.0.2",
+        "@bit/jorgemoreira.headless-react.surface.master-detail": "^0.0.3",
         "@bit/jorgemoreira.headless-react.surface.modal": "^0.0.1",
-        "@bit/jorgemoreira.headless.styles": "^0.0.4",
+        "@bit/jorgemoreira.headless.styles": "^0.0.5",
         "@reduxjs/toolkit": "^1.1.0",
         "@testing-library/jest-dom": "^4.2.4",
         "@testing-library/react": "^9.3.2",

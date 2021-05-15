@@ -7,6 +7,7 @@ import NewTask from "./TaskCreator";
 import TaskManager from "./TaskManager";
 import ListItem from "../common/ListItem";
 import ModalCard from "../common/ModalCard";
+import { getListById } from "../list/listSlice";
 
 class TasksList extends React.Component {
     state = { createTask: false, edittedTaskId: null, showDone: false };
@@ -80,6 +81,10 @@ class TasksList extends React.Component {
 
         return (
             <div>
+                <h1 className="hidden mt-0 mb-6 text-white lg:block">
+                    {this.props.list.name}
+                </h1>
+
                 <ul>
                     <ListItem
                         icon="fas fa-plus"
@@ -124,6 +129,7 @@ class TasksList extends React.Component {
 }
 
 const mapStateToProps = (state, ownProps) => ({
+    list: getListById(state.lists, ownProps.listId),
     doneTasks: getDoneTasksByList(state.tasks, ownProps.listId),
     undoneTasks: getUndoneTasksByList(state.tasks, ownProps.listId),
 });
