@@ -12,6 +12,15 @@ class Home extends React.Component {
         this.state = { showLists: false };
     }
 
+    componentDidUpdate(prevProps) {
+        if (
+            this.props.activeListId !== prevProps.activeListId &&
+            this.state.showLists
+        ) {
+            this.toggleMasterDetail();
+        }
+    }
+
     renderTasks() {
         return this.props.activeListId ? (
             <TasksList listId={this.props.activeListId} />
