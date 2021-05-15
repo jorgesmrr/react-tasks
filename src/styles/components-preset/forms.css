@@ -1,55 +1,16 @@
-/** Basics **/
-
-input, select {
-    @apply rounded border border-neutral-2;
-    @apply px-2 py-1;
+input {
+    @apply px-2 py-1 border rounded border-neutral-2;
 }
 
-input:not([type=checkbox]):not([type=radio]), select {
+input:not([type="checkbox"]):not([type="radio"]),
+select {
     @apply w-full;
 }
 
-input:hover, select:hover {
+input:hover {
     @apply border-primary-3;
 }
 
-input:active, select:active {
+input:active {
     @apply border-neutral-5;
-}
-
-/** Form Groups **/
-
-.form-group {
-    @apply mb-4;
-    @apply block;
-}
-
-.form-group label {
-    @apply mb-2;
-}
-
-.form-group input:not([type=checkbox]):not([type=radio]), .form-group select, .form-group label {
-    @apply inline-block;
-}
-
-/** Input Groups **/
-
-.input-group {
-    @apply inline-flex;
-}
-
-.input-group label,
-.input-group span {
-    @apply bg-neutral-2;
-    @apply rounded;
-}
-
-.input-group :not(:first-child) {
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0;
-}
-
-.input-group :not(:last-child) {
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
 }
