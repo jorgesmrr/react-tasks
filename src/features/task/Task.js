@@ -15,7 +15,7 @@ class Task extends React.Component {
                 title={this.props.task.text}
                 dataTest="task"
                 optionsDataTest="taskEdit"
-                onClick={() => this.props.toggleTask(this.props.id)}
+                onItemClick={() => this.props.toggleTask(this.props.id)}
                 onOptionsClick={() => this.props.onOptionsClick()}
             />
         );

@@ -13,6 +13,8 @@ class ListManager extends React.Component {
     }
 
     submit() {
+        if (!this.state.name.length) return;
+
         this.props.updateList({
             id: this.props.list.id,
             name: this.state.name,
@@ -29,6 +31,7 @@ class ListManager extends React.Component {
                             autoFocus
                             value={this.state.name}
                             onChange={(name) => this.setState({ name })}
+                            onEnter={() => this.submit()}
                         />
                     </Field>
                 </div>

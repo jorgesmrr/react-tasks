@@ -13,6 +13,8 @@ class TaskManager extends React.Component {
     }
 
     submit() {
+        if (!this.state.text.length) return;
+
         this.props.updateTask({
             id: this.props.task.id,
             text: this.state.text,
@@ -29,6 +31,7 @@ class TaskManager extends React.Component {
                             autoFocus
                             value={this.state.text}
                             onChange={(text) => this.setState({ text })}
+                            onEnter={() => this.submit()}
                         />
                     </Field>
                 </div>

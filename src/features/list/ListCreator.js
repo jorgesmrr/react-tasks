@@ -8,6 +8,8 @@ class NewList extends React.Component {
     state = { name: "" };
 
     submit() {
+        if (!this.state.name.length) return;
+
         this.props.add(this.state.name);
         this.props.onSuccess();
     }
@@ -22,6 +24,7 @@ class NewList extends React.Component {
                             value={this.state.name}
                             data-test="newListName"
                             onChange={(name) => this.setState({ name })}
+                            onEnter={() => this.submit()}
                         />
                     </Field>
                 </div>

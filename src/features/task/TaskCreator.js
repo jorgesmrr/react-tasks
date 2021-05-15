@@ -8,6 +8,8 @@ class NewTask extends React.Component {
     state = { text: "" };
 
     submit() {
+        if (!this.state.text.length) return;
+
         this.props.add({
             listId: this.props.activeListId,
             text: this.state.text,
@@ -26,6 +28,7 @@ class NewTask extends React.Component {
                             value={this.state.text}
                             data-test="newTaskName"
                             onChange={(text) => this.setState({ text })}
+                            onEnter={() => this.submit()}
                         />
                     </Field>
                 </div>

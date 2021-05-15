@@ -7,6 +7,7 @@ function ListItem({
     selected,
     count,
     onClick,
+    onItemClick,
     onOptionsClick,
     dataTest,
     optionsDataTest,
@@ -19,9 +20,12 @@ function ListItem({
                 selected ? "bg-primary-2" : "bg-neutral-1  hover:bg-neutral-2"
             }`}
             data-test={dataTest}
-            onClick={() => onClick()}
+            onClick={() => onClick?.()}
         >
-            <i className={`${icon} mr-4 text-3xl`} />
+            <i
+                className={`${icon} mr-4 text-3xl`}
+                onClick={() => onItemClick?.()}
+            />
             <span className="mr-auto">{title}</span>
 
             {count > 0 && (
@@ -34,7 +38,7 @@ function ListItem({
                 <div
                     className="w-12 py-2 text-center rounded hover:bg-neutral-3"
                     data-test={optionsDataTest}
-                    onClick={() => onOptionsClick()}
+                    onClick={() => onOptionsClick?.()}
                 >
                     <i className="rounded cursor-pointer fas fa-ellipsis-v" />
                 </div>
