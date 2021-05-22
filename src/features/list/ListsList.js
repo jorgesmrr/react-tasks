@@ -3,9 +3,8 @@ import List from "./List";
 import { connect } from "react-redux";
 import Modal from "@bit/jorgemoreira.headless-react.surface.modal";
 import ListManager from "./ListManager";
-import NewList from "./ListCreator";
+import ListCreator from "./ListCreator";
 import { getListsIds } from "./listSlice";
-import ListItem from "../common/ListItem";
 import ModalCard from "../common/ModalCard";
 
 class ListsList extends React.Component {
@@ -25,15 +24,6 @@ class ListsList extends React.Component {
 
     cancelListEdition() {
         this.setState({ edittedListId: null });
-    }
-
-    renderListCreator() {
-        return this.state.createList ? (
-            <NewList
-                onSuccess={() => this.cancelListCreation()}
-                onCancel={() => this.cancelListCreation()}
-            />
-        ) : null;
     }
 
     renderListManager() {
@@ -58,27 +48,11 @@ class ListsList extends React.Component {
         return (
             <div>
                 <ul>
-                    <ListItem
-                        icon="fas fa-plus"
-                        title="Create new list..."
-                        data-test="listCreate"
-                        onClick={() => this.createList()}
-                    />
+                    <ListCreator />
 
                     {lists}
                 </ul>
 
-                <Modal
-                    show={this.state.createList}
-                    onDismiss={() => this.cancelListCreation()}
-                >
-                    <ModalCard
-                        title="New list"
-                        onDismiss={() => this.cancelListCreation()}
-                    >
-                        {this.renderListCreator()}
-                    </ModalCard>
-                </Modal>
                 <Modal
                     show={this.state.edittedListId}
                     onDismiss={() => this.cancelListEdition()}

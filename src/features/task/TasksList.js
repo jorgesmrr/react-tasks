@@ -3,22 +3,14 @@ import Task from "./Task";
 import { connect } from "react-redux";
 import { getDoneTasksByList, getUndoneTasksByList } from "./taskSlice";
 import Modal from "@bit/jorgemoreira.headless-react.surface.modal";
-import NewTask from "./TaskCreator";
+import TaskCreator from "./TaskCreator";
 import TaskManager from "./TaskManager";
 import ListItem from "../common/ListItem";
 import ModalCard from "../common/ModalCard";
 import { getListById } from "../list/listSlice";
 
 class TasksList extends React.Component {
-    state = { createTask: false, edittedTaskId: null, showDone: false };
-
-    createTask() {
-        this.setState({ createTask: true });
-    }
-
-    cancelTaskCreation() {
-        this.setState({ createTask: false });
-    }
+    state = { edittedTaskId: null, showDone: false };
 
     editTask(id) {
         this.setState({ edittedTaskId: id });
@@ -26,15 +18,6 @@ class TasksList extends React.Component {
 
     cancelTaskEdition() {
         this.setState({ edittedTaskId: null });
-    }
-
-    renderTaskCreator() {
-        return this.state.createTask ? (
-            <NewTask
-                onSuccess={() => this.cancelTaskCreation()}
-                onCancel={() => this.cancelTaskCreation()}
-            />
-        ) : null;
     }
 
     renderTaskManager() {
@@ -86,13 +69,7 @@ class TasksList extends React.Component {
                 </h1>
 
                 <ul>
-                    <ListItem
-                        icon="fas fa-plus"
-                        title="Create new task..."
-                        primary
-                        data-test="taskCreate"
-                        onClick={() => this.createTask()}
-                    />
+                    <TaskCreator />
 
                     {undoneTasks}
 
@@ -101,17 +78,6 @@ class TasksList extends React.Component {
                     {doneTasks}
                 </ul>
 
-                <Modal
-                    show={this.state.createTask}
-                    onDismiss={() => this.cancelTaskCreation()}
-                >
-                    <ModalCard
-                        title="New task"
-                        onDismiss={() => this.cancelTaskCreation()}
-                    >
-                        {this.renderTaskCreator()}
-                    </ModalCard>
-                </Modal>
                 <Modal
                     show={this.state.edittedTaskId}
                     onDismiss={() => this.cancelTaskEdition()}

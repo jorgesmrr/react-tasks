@@ -1,12 +1,10 @@
-const defaultTheme = require('tailwindcss/defaultTheme');
+const defaultTheme = require("tailwindcss/defaultTheme");
 
 const extendedColorMapping = {
-    primary: 'blue',
-    neutral: 'gray',
-    info: 'teal',
-    success: 'green',
-    warning: 'yellow',
-    danger: 'red'
+    primary: "blue",
+    neutral: "gray",
+    success: "green",
+    danger: "red",
 };
 
 const extendedColors = {};
@@ -15,35 +13,37 @@ for (const variant in extendedColorMapping) {
     const color = extendedColorMapping[variant];
 
     extendedColors[variant] = {
-        1: defaultTheme.colors[color]['200'],
-        2: defaultTheme.colors[color]['300'],
-        3: defaultTheme.colors[color]['500'],
-        4: defaultTheme.colors[color]['700'],
-        5: defaultTheme.colors[color]['900']
+        1: defaultTheme.colors[color]["200"],
+        2: defaultTheme.colors[color]["300"],
+        3: defaultTheme.colors[color]["500"],
+        4: defaultTheme.colors[color]["700"],
+        5: defaultTheme.colors[color]["900"],
     };
 }
 
 module.exports = {
     theme: {
-        extend: {
-            colors: extendedColors
-        }
+        colors: {
+            ...extendedColors,
+            white: "white",
+            overlay: "#14141466",
+        },
     },
     plugins: [
         function ({ addVariant }) {
-            addVariant('important', ({ container }) => {
-                container.walkRules(rule => {
-                    rule.selector = `.\\!${rule.selector.slice(1)}`
-                    rule.walkDecls(decl => {
-                        decl.important = true
-                    })
-                })
-            })
+            addVariant("important", ({ container }) => {
+                container.walkRules((rule) => {
+                    rule.selector = `.\\!${rule.selector.slice(1)}`;
+                    rule.walkDecls((decl) => {
+                        decl.important = true;
+                    });
+                });
+            });
         },
         function ({ addVariant }) {
-            addVariant('colors', ({ container }) => {
+            addVariant("colors", ({ container }) => {
                 const originalRules = [];
-                container.walkRules(rule => {
+                container.walkRules((rule) => {
                     originalRules.push(rule);
                 });
 
@@ -53,21 +53,32 @@ module.exports = {
 
                 const build = (rule, color) => {
                     const newRule = firstVariation ? rule : rule.clone();
-                    const regex = new RegExp(firstVariation ? colorVariations[0] : colorVariations[1], 'g');
-                    newRule.selector = rule.selector.slice().replace(regex, color);
-                    newRule.walkAtRules(innerRule => {
-                        innerRule.params = innerRule.params.slice().replace(regex, color);
+                    const regex = new RegExp(
+                        firstVariation
+                            ? colorVariations[0]
+                            : colorVariations[1],
+                        "g"
+                    );
+                    newRule.selector = rule.selector
+                        .slice()
+                        .replace(regex, color);
+                    newRule.walkAtRules((innerRule) => {
+                        innerRule.params = innerRule.params
+                            .slice()
+                            .replace(regex, color);
                     });
 
                     container.append(newRule);
 
                     firstVariation = false;
-                }
+                };
 
-                originalRules.forEach(rule => {
-                    colorVariations.slice(1).forEach(color => build(rule, color));
+                originalRules.forEach((rule) => {
+                    colorVariations
+                        .slice(1)
+                        .forEach((color) => build(rule, color));
                 });
-            })
-        }
-    ]
-}
+            });
+        },
+    ],
+};

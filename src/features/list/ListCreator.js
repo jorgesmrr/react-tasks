@@ -1,49 +1,23 @@
 import React from "react";
 import { add } from "./listSlice";
 import { connect } from "react-redux";
-import Field from "@bit/jorgemoreira.headless-react.input.field";
-import TextField from "@bit/jorgemoreira.headless-react.input.text-field";
+import ListField from "../common/ListField";
 
 class NewList extends React.Component {
-    state = { name: "" };
+    submit(text) {
+        if (!text.length) return;
 
-    submit() {
-        if (!this.state.name.length) return;
-
-        this.props.add(this.state.name);
-        this.props.onSuccess();
+        this.props.add(text);
     }
 
     render() {
         return (
-            <div>
-                <div className="card-block">
-                    <Field label="Name">
-                        <TextField
-                            autoFocus
-                            value={this.state.name}
-                            data-test="newListName"
-                            onChange={(name) => this.setState({ name })}
-                            onEnter={() => this.submit()}
-                        />
-                    </Field>
-                </div>
-                <div className="text-right card-block">
-                    <button
-                        className="mr-2 btn"
-                        onClick={() => this.props.onCancel()}
-                    >
-                        Cancel
-                    </button>
-                    <button
-                        className="btn btn-primary"
-                        data-test="newListSubmit"
-                        onClick={() => this.submit()}
-                    >
-                        Save
-                    </button>
-                </div>
-            </div>
+            <ListField
+                icon="fas fa-plus"
+                data-test="listCreate"
+                placeholder="Create a new list..."
+                onSubmit={(text) => this.submit(text)}
+            />
         );
     }
 }

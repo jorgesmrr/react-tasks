@@ -1,76 +1,93 @@
 /* purgecss start ignore */
 
 @import "tailwindcss/base";
-@import "./components-preset/main.css";
 @import "tailwindcss/components";
+
 /* purgecss end ignore */
 
 @import "tailwindcss/utilities";
 
-/** Scollable **/
-
-.scrollable-container {
-    max-height: 100%;
-    display: flex;
-    flex-direction: column;
+html,
+body {
+    font-size: 14px;
 }
 
-.scrollable-container .scrollable-content {
-    flex: 1 1 auto;
-    overflow-y: auto;
+body {
+    @apply text-neutral-5;
 }
 
-/** Drawer **/
-
-.drawer {
-    @apply bg-white shadow-lg fixed inset-y-0;
-    left: 100%;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    /* todo em unit */
+    @apply block mt-4 mb-2;
+    line-height: 1.1;
 }
 
-.drawer.open {
-    @apply left-0;
+h3 {
+    @apply text-3xl;
 }
 
-/** Spinner **/
-
-.spinner {
-    @apply block my-0 mx-auto;
-    border-radius: 100%;
-    border-color: theme("colors.neutral.1");
-    border-top-color: theme("colors.primary.3");
-    animation: spinner-spin 0.8s linear infinite;
-    width: 2.5rem;
-    height: 2.5rem;
-    flex: 0 0 2.5rem;
-    border-width: 4px;
+h2 {
+    @apply text-4xl;
 }
 
-.spinner.spinner-small {
-    width: 1.5rem;
-    height: 1.5rem;
-    flex: 0 0 1.5rem;
-    border-width: 2px;
+h1 {
+    @apply text-5xl;
 }
 
-.spinner.spinner-inline {
-    width: 1em;
-    height: 1em;
-    flex: 0 0 1em;
-    border-width: 2px;
+.content-medium {
+    @apply px-4 mx-auto;
+    max-width: 900px;
 }
 
-@keyframes spinner-spin {
-    0% {
-        transform: rotate(0deg);
+/** Forms **/
+
+input {
+    @apply text-white outline-none;
+    background-color: transparent;
+}
+
+input::placeholder {
+    @apply text-white;
+    opacity: 0.9;
+}
+
+/** Cards **/
+
+.card {
+    @apply bg-white border rounded border-neutral-2;
+}
+
+.card .card-block {
+    @apply p-4 border-b border-neutral-2;
+}
+
+.card > .card-block:last-child,
+.card > :last-child .card-block:last-child {
+    @apply border-none;
+}
+
+.card .card-title {
+    @apply font-bold;
+}
+
+/** Buttons **/
+
+.btn {
+    @apply px-3 leading-loose text-center uppercase border border-solid rounded;
+    transition: background-color ease-in-out 0.2s,
+        border-bottom-color ease-in-out 0.2s, color ease-in-out 0.2s;
+}
+
+@variants colors {
+    .btn-primary {
+        @apply text-white bg-primary-3 border-primary-4;
     }
-    100% {
-        transform: rotate(360deg);
+    .btn-primary:hover {
+        @apply bg-primary-4 border-primary-5;
     }
-}
-
-/** Busy **/
-
-.busy {
-    @apply select-none pointer-events-none opacity-50;
-    transition: opacity 0.1s ease-in-out;
 }
