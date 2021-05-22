@@ -14,7 +14,7 @@ function ListField({ icon, placeholder, dataTest, onSubmit }) {
 
     return (
         <li
-            className="flex items-center p-4 mb-2 text-2xl rounded bg-overlay"
+            className="flex items-center p-4 mb-2 text-2xl rounded shadow-inner bg-overlay"
             onClick={setFocusOnClick}
         >
             <i className={`${icon} mr-4 text-3xl text-white opacity-75`} />
