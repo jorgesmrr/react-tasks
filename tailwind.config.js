@@ -23,6 +23,7 @@ for (const variant in extendedColorMapping) {
 
 module.exports = {
     theme: {
+        borderRadius: { default: "10px" },
         colors: {
             ...extendedColors,
             white: "white",

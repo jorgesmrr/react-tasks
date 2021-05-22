@@ -1,7 +1,7 @@
 const ModalCard = ({ title, onDismiss, children }) => {
     return (
-        <div className="card">
-            <div className="flex card-block">
+        <div className="text-2xl card">
+            <div className="flex items-center card-block">
                 <span className="card-title">{title}</span>
                 <span
                     className="ml-auto cursor-pointer fas fa-times"

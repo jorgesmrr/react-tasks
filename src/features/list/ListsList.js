@@ -55,6 +55,7 @@ class ListsList extends React.Component {
 
                 <Modal
                     show={this.state.edittedListId}
+                    width="45rem"
                     onDismiss={() => this.cancelListEdition()}
                 >
                     <ModalCard

@@ -30,6 +30,7 @@ class ListManager extends React.Component {
                         <TextField
                             autoFocus
                             value={this.state.name}
+                            className="light"
                             onChange={(name) => this.setState({ name })}
                             onEnter={() => this.submit()}
                         />

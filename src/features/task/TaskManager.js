@@ -30,6 +30,7 @@ class TaskManager extends React.Component {
                         <TextField
                             autoFocus
                             value={this.state.text}
+                            className="light"
                             onChange={(text) => this.setState({ text })}
                             onEnter={() => this.submit()}
                         />

@@ -80,6 +80,7 @@ class TasksList extends React.Component {
 
                 <Modal
                     show={this.state.edittedTaskId}
+                    width="45rem"
                     onDismiss={() => this.cancelTaskEdition()}
                 >
                     <ModalCard

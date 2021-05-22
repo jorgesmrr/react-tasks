@@ -19,7 +19,7 @@ function ListField({ icon, placeholder, dataTest, onSubmit }) {
         >
             <i className={`${icon} mr-4 text-3xl text-white opacity-75`} />
             <TextField
-                className="flex-grow"
+                className="flex-grow transparent-dark"
                 ref={textFieldRef}
                 value={text}
                 data-test={dataTest}

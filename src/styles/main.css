@@ -46,12 +46,32 @@ h1 {
 
 /** Forms **/
 
+label {
+    @apply mb-2;
+}
+
 input {
-    @apply text-white outline-none;
+    @apply w-full px-2 py-1 outline-none;
+}
+
+input.light {
+    @apply px-2 py-1 border rounded border-neutral-2;
+}
+
+input.light:hover {
+    @apply border-primary-3;
+}
+
+input.light:active {
+    @apply border-neutral-5;
+}
+
+input.transparent-dark {
+    @apply text-white;
     background-color: transparent;
 }
 
-input::placeholder {
+input.transparent-dark::placeholder {
     @apply text-white;
     opacity: 0.9;
 }
@@ -78,9 +98,7 @@ input::placeholder {
 /** Buttons **/
 
 .btn {
-    @apply px-3 leading-loose text-center uppercase border border-solid rounded;
-    transition: background-color ease-in-out 0.2s,
-        border-bottom-color ease-in-out 0.2s, color ease-in-out 0.2s;
+    @apply px-3 leading-loose text-center uppercase transition-colors duration-150 ease-in-out border border-solid rounded;
 }
 
 @variants colors {
