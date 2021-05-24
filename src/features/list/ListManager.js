@@ -39,7 +39,7 @@ class ListManager extends React.Component {
                 <div className="flex card-block">
                     <button
                         className="btn btn-danger"
-                        data-test="listDelete"
+                        data-testid="listDelete"
                         onClick={() => this.delete()}
                     >
                         Delete

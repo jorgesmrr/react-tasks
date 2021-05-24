@@ -13,8 +13,8 @@ class Task extends React.Component {
             <ListItem
                 icon={`${this.props.task.done ? "fas" : "far"} fa-check-circle`}
                 title={this.props.task.text}
-                dataTest="task"
-                optionsDataTest="taskEdit"
+                dataTestId="task"
+                optionsDataTestId="taskEdit"
                 onItemClick={() => this.props.toggleTask(this.props.id)}
                 onOptionsClick={() => this.props.onOptionsClick()}
             />

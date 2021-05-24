@@ -14,7 +14,7 @@ class NewList extends React.Component {
         return (
             <ListField
                 icon="fas fa-plus"
-                data-test="listCreate"
+                dataTestId="newListName"
                 placeholder="Create a new list..."
                 onSubmit={(text) => this.submit(text)}
             />

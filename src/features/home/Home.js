@@ -42,6 +42,7 @@ class Home extends React.Component {
                     masterWidth="30rem"
                     maxContentZIndex={20}
                     onHideMaster={() => this.toggleMasterDetail()}
+                    overlayDataTestId="drawerOverlay"
                     master={
                         <div className="px-8 py-4 bg-white lg:pt-16 lg:shadow-lg">
                             <h1 className="mt-0 mb-6">Lists</h1>
@@ -59,6 +60,7 @@ class Home extends React.Component {
                             <div className="fixed inset-x-0 top-0 z-20 flex items-center h-20 bg-white shadow-lg lg:hidden">
                                 <i
                                     className="mx-8 text-2xl cursor-pointer lg:hidden fas fa-bars hover:text-primary-3"
+                                    data-testid="drawerIcon"
                                     onClick={() => this.toggleMasterDetail()}
                                 />
                                 <h1 className="my-0 mr-8 text-4xl">

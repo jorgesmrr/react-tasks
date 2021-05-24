@@ -39,7 +39,7 @@ class TaskManager extends React.Component {
                 <div className="flex card-block">
                     <button
                         className="btn btn-danger"
-                        data-test="taskDelete"
+                        data-testid="taskDelete"
                         onClick={() => this.delete()}
                     >
                         Delete

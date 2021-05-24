@@ -17,7 +17,7 @@ class NewTask extends React.Component {
         return (
             <ListField
                 icon="fas fa-plus"
-                data-test="taskCreate"
+                dataTestId="newTaskName"
                 placeholder="Type here to add a task..."
                 onSubmit={(text) => this.submit(text)}
             />

@@ -9,8 +9,8 @@ function ListItem({
     onClick,
     onItemClick,
     onOptionsClick,
-    dataTest,
-    optionsDataTest,
+    dataTestId,
+    optionsDataTestId,
 }) {
     return (
         <li
@@ -19,7 +19,7 @@ function ListItem({
             } ${
                 selected ? "bg-primary-2" : "bg-neutral-1  hover:bg-neutral-2"
             }`}
-            data-test={dataTest}
+            data-testid={dataTestId}
             onClick={() => onClick?.()}
         >
             <i
@@ -37,7 +37,7 @@ function ListItem({
             {onOptionsClick && (
                 <div
                     className="w-12 py-2 text-center transition-colors duration-150 ease-in-out rounded hover:bg-neutral-3"
-                    data-test={optionsDataTest}
+                    data-testid={optionsDataTestId}
                     onClick={() => onOptionsClick?.()}
                 >
                     <i className="rounded cursor-pointer fas fa-pencil-alt" />

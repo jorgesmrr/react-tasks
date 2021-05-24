@@ -1,7 +1,7 @@
 import TextField from "@bit/jorgemoreira.headless-react.input.text-field";
 import React, { useRef, useState } from "react";
 
-function ListField({ icon, placeholder, dataTest, onSubmit }) {
+function ListField({ icon, placeholder, dataTestId, onSubmit }) {
     const textFieldRef = useRef();
     const [text, setText] = useState("");
 
@@ -22,7 +22,7 @@ function ListField({ icon, placeholder, dataTest, onSubmit }) {
                 className="flex-grow transparent-dark"
                 ref={textFieldRef}
                 value={text}
-                data-test={dataTest}
+                dataTestId={dataTestId}
                 placeholder={placeholder}
                 onChange={setText}
                 onEnter={onEnter}

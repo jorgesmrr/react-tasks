@@ -6,8 +6,8 @@
     "private": true,
     "dependencies": {
         "@bit/jorgemoreira.headless-react.input.field": "^0.0.1",
-        "@bit/jorgemoreira.headless-react.input.text-field": "^0.0.2",
-        "@bit/jorgemoreira.headless-react.surface.master-detail": "^0.0.3",
+        "@bit/jorgemoreira.headless-react.input.text-field": "^0.0.3",
+        "@bit/jorgemoreira.headless-react.surface.master-detail": "^0.0.4",
         "@bit/jorgemoreira.headless-react.surface.modal": "^0.0.2",
         "@bit/jorgemoreira.headless.styles": "^0.0.6",
         "@reduxjs/toolkit": "^1.1.0",
@@ -46,7 +46,7 @@
         ]
     },
     "devDependencies": {
-        "cypress": "^4.11.0",
+        "cypress": "^7.3.0",
         "tailwindcss": "^1.4.6"
     },
     "bit": {

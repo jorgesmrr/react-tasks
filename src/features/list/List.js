@@ -17,8 +17,8 @@ class List extends React.Component {
                 title={this.props.list.name}
                 count={this.props.tasksCount}
                 selected={this.props.isActive}
-                dataTest="list"
-                optionsDataTest="listEdit"
+                dataTestId="list"
+                optionsDataTestId="listEdit"
                 onClick={() => this.props.openList(this.props.list.id)}
                 onOptionsClick={() => this.props.onOptionsClick()}
             />
