@@ -5,6 +5,7 @@ import ListsList from "../list/ListsList";
 import { connect } from "react-redux";
 import backgroundImage from "./background.jpg";
 import NoListHint from "../common/NoListsHint";
+import { getListById } from "../list/listSlice";
 
 class Home extends React.Component {
     constructor(props) {
@@ -14,7 +15,7 @@ class Home extends React.Component {
 
     componentDidUpdate(prevProps) {
         if (
-            this.props.activeListId !== prevProps.activeListId &&
+            this.props.activeList !== prevProps.activeList &&
             this.state.showLists
         ) {
             this.toggleMasterDetail();
@@ -22,8 +23,8 @@ class Home extends React.Component {
     }
 
     renderTasks() {
-        return this.props.activeListId ? (
-            <TasksList listId={this.props.activeListId} />
+        return (this.props.activeList || {}).id ? (
+            <TasksList listId={this.props.activeList.id} />
         ) : (
             <NoListHint />
         );
@@ -42,7 +43,7 @@ class Home extends React.Component {
                     maxContentZIndex={20}
                     onHideMaster={() => this.toggleMasterDetail()}
                     master={
-                        <div className="px-4 py-4 bg-white lg:pt-16 lg:shadow-lg">
+                        <div className="px-8 py-4 bg-white lg:pt-16 lg:shadow-lg">
                             <h1 className="mt-0 mb-6">Lists</h1>
                             <ListsList />
                         </div>
@@ -57,12 +58,16 @@ class Home extends React.Component {
                             <div className="absolute inset-0 opacity-25 bg-neutral-5" />
                             <div className="fixed inset-x-0 top-0 z-20 flex items-center h-20 bg-white shadow-lg lg:hidden">
                                 <i
-                                    className="mx-4 text-2xl cursor-pointer lg:hidden fas fa-bars hover:text-primary-3"
+                                    className="mx-8 text-2xl cursor-pointer lg:hidden fas fa-bars hover:text-primary-3"
                                     onClick={() => this.toggleMasterDetail()}
                                 />
-                                <h1 className="my-0 text-4xl">Tasks</h1>
+                                <h1 className="my-0 mr-8 text-4xl">
+                                    {this.props.activeList
+                                        ? this.props.activeList.name
+                                        : "Tasks"}
+                                </h1>
                             </div>
-                            <div className="relative z-10 pt-20 mt-4 lg:mt-0 lg:pt-0 content-medium">
+                            <div className="relative z-10 pt-20 mt-8 lg:mt-0 lg:pt-0 content-medium">
                                 {this.renderTasks()}
                             </div>
                         </div>
@@ -73,6 +78,8 @@ class Home extends React.Component {
     }
 }
 
-const mapStateToProps = (state) => ({ activeListId: state.lists.activeListId });
+const mapStateToProps = (state) => ({
+    activeList: getListById(state.lists, state.lists.activeListId),
+});
 
 export default connect(mapStateToProps)(Home);

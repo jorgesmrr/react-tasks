@@ -40,7 +40,7 @@ h1 {
 }
 
 .content-medium {
-    @apply px-4 mx-auto;
+    @apply px-8 mx-auto;
     max-width: 900px;
 }
 
