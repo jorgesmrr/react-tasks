@@ -1,16 +1,10 @@
 # react-tasks
 
-[![React Tasks](https://raw.githubusercontent.com/jorgesmrr/react-tasks/master/preview.jpg?sanitize=true&raw=true)]()
-
-A simple to-do app made with React.
-
-## Warning
-
-This project is just an experiment to learn new things :)
+A simple to-do app I made with React.
 
 ## See it working
 
-Open the [live demo](https://xenodochial-sinoussi-55ac44.netlify.app/).
+Open the [website](https://xenodochial-sinoussi-55ac44.netlify.app/).
 
 ## What I used?
 
