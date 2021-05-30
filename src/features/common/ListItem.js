@@ -1,3 +1,4 @@
+import classNames from "classnames";
 import React from "react";
 
 function ListItem({
@@ -12,13 +13,18 @@ function ListItem({
     dataTestId,
     optionsDataTestId,
 }) {
+    const className = classNames(
+        "flex text-2xl items-center pl-4 pr-2 py-2 mb-2 rounded cursor-pointer shadow-sm transition-colors duration-150 ease-in-out",
+        {
+            "text-primary-4 hover:text-primary-5": primary,
+            "bg-primary-2": selected,
+            "bg-neutral-1  hover:bg-neutral-2": !selected,
+        }
+    );
+
     return (
         <li
-            className={`flex text-2xl items-center pl-4 pr-2 py-2 mb-2 rounded cursor-pointer shadow-sm transition-colors duration-150 ease-in-out ${
-                primary ? "text-primary-4 hover:text-primary-5" : ""
-            } ${
-                selected ? "bg-primary-2" : "bg-neutral-1  hover:bg-neutral-2"
-            }`}
+            className={className}
             data-testid={dataTestId}
             onClick={() => onClick?.()}
         >
