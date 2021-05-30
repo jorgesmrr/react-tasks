@@ -1,5 +1,6 @@
 import TextField from "@bit/jorgemoreira.headless-react.input.text-field";
 import React, { useRef, useState } from "react";
+import ListItem from "./ListItem";
 
 function ListField({ icon, placeholder, dataTestId, onSubmit }) {
     const textFieldRef = useRef();
@@ -13,13 +14,7 @@ function ListField({ icon, placeholder, dataTestId, onSubmit }) {
     };
 
     return (
-        <li
-            className="flex items-center py-2 pl-4 pr-2 mb-2 text-2xl rounded shadow-inner bg-overlay"
-            onClick={setFocusOnClick}
-        >
-            <i
-                className={`${icon} w-10 mr-4 text-white text-center opacity-75`}
-            />
+        <ListItem transparent icon={icon} onClick={setFocusOnClick}>
             <TextField
                 className="flex-grow p-0 transparent-dark"
                 ref={textFieldRef}
@@ -29,7 +24,7 @@ function ListField({ icon, placeholder, dataTestId, onSubmit }) {
                 onChange={setText}
                 onEnter={onEnter}
             />
-        </li>
+        </ListItem>
     );
 }
 

@@ -6,21 +6,30 @@ function ListItem({
     title,
     primary,
     selected,
+    transparent,
     count,
     onClick,
     onItemClick: onIconClick,
     onOptionsClick,
     dataTestId,
     optionsDataTestId,
+    children,
 }) {
     const className = classNames(
-        "flex text-2xl items-center pl-4 pr-2 py-2 mb-2 rounded cursor-pointer shadow-sm transition-colors duration-150 ease-in-out",
+        "flex text-2xl items-center pl-4 pr-2 py-2 mb-2 rounded",
         {
+            "shadow-inner bg-overlay": transparent,
+            "shadow-sm cursor-pointer transition-colors duration-150 ease-in-out":
+                !transparent,
             "text-primary-4 hover:text-primary-5": primary,
             "bg-primary-2": selected,
-            "bg-neutral-1  hover:bg-neutral-2": !selected,
+            "bg-neutral-1 hover:bg-neutral-2": !selected && !transparent,
         }
     );
+
+    const iconClassName = classNames(`${icon} w-10 mr-4 text-center`, {
+        "text-white": transparent,
+    });
 
     return (
         <li
@@ -28,11 +37,8 @@ function ListItem({
             data-testid={dataTestId}
             onClick={() => onClick?.()}
         >
-            <i
-                className={`${icon} w-10 mr-4 text-center`}
-                onClick={() => onIconClick?.()}
-            />
-            <span className="mr-auto">{title}</span>
+            <i className={iconClassName} onClick={() => onIconClick?.()} />
+            <span className="mr-auto">{title || children}</span>
 
             {count > 0 && (
                 <div className="px-4 mr-2 text-white rounded bg-primary-4">
