@@ -7,14 +7,14 @@ function ListItem({
     selected,
     count,
     onClick,
-    onItemClick,
+    onItemClick: onIconClick,
     onOptionsClick,
     dataTestId,
     optionsDataTestId,
 }) {
     return (
         <li
-            className={`flex text-2xl items-center p-4 mb-2 rounded cursor-pointer shadow-sm transition-colors duration-150 ease-in-out ${
+            className={`flex text-2xl items-center pl-4 pr-2 py-2 mb-2 rounded cursor-pointer shadow-sm transition-colors duration-150 ease-in-out ${
                 primary ? "text-primary-4 hover:text-primary-5" : ""
             } ${
                 selected ? "bg-primary-2" : "bg-neutral-1  hover:bg-neutral-2"
@@ -23,8 +23,8 @@ function ListItem({
             onClick={() => onClick?.()}
         >
             <i
-                className={`${icon} mr-4 text-3xl`}
-                onClick={() => onItemClick?.()}
+                className={`${icon} w-10 mr-4 text-center`}
+                onClick={() => onIconClick?.()}
             />
             <span className="mr-auto">{title}</span>
 
@@ -36,7 +36,7 @@ function ListItem({
 
             {onOptionsClick && (
                 <div
-                    className="w-12 py-2 text-center transition-colors duration-150 ease-in-out rounded hover:bg-neutral-3"
+                    className="w-12 text-center transition-colors duration-150 ease-in-out rounded hover:bg-neutral-3"
                     data-testid={optionsDataTestId}
                     onClick={() => onOptionsClick?.()}
                 >

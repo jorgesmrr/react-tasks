@@ -1,3 +1,5 @@
+import React from "react";
+
 const ModalCard = ({ title, onDismiss, children }) => {
     return (
         <div className="text-2xl card">

@@ -14,12 +14,14 @@ function ListField({ icon, placeholder, dataTestId, onSubmit }) {
 
     return (
         <li
-            className="flex items-center p-4 mb-2 text-2xl rounded shadow-inner bg-overlay"
+            className="flex items-center py-2 pl-4 pr-2 mb-2 text-2xl rounded shadow-inner bg-overlay"
             onClick={setFocusOnClick}
         >
-            <i className={`${icon} mr-4 text-3xl text-white opacity-75`} />
+            <i
+                className={`${icon} w-10 mr-4 text-white text-center opacity-75`}
+            />
             <TextField
-                className="flex-grow transparent-dark"
+                className="flex-grow p-0 transparent-dark"
                 ref={textFieldRef}
                 value={text}
                 dataTestId={dataTestId}

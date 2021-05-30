@@ -1,3 +1,4 @@
+import React from "react";
 import emptyVector from "./empty-vector.svg";
 
 const NoListHint = () => (
