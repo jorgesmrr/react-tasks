@@ -44,7 +44,7 @@ class Home extends React.Component {
                     onHideMaster={() => this.toggleMasterDetail()}
                     overlayDataTestId="drawerOverlay"
                     master={
-                        <div className="px-8 py-4 bg-white lg:pt-16 lg:shadow-lg">
+                        <div className="px-4 py-4 bg-white sm:px-8 lg:pt-16 lg:shadow-lg">
                             <h1 className="mt-0 mb-6">Lists</h1>
                             <ListsList />
                         </div>
