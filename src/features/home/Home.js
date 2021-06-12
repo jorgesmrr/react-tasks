@@ -6,6 +6,7 @@ import { connect } from "react-redux";
 import backgroundImage from "./background.jpg";
 import NoListHint from "../common/NoListsHint";
 import { getListById } from "../list/listSlice";
+import Footer from "../common/Footer";
 
 class Home extends React.Component {
     constructor(props) {
@@ -44,9 +45,13 @@ class Home extends React.Component {
                     onHideMaster={() => this.toggleMasterDetail()}
                     overlayDataTestId="drawerOverlay"
                     master={
-                        <div className="px-4 py-4 bg-white sm:px-8 lg:pt-16 lg:shadow-lg">
+                        <div className="flex flex-col px-4 py-4 overflow-auto bg-white sm:px-8 lg:pt-16 lg:shadow-lg">
                             <h1 className="mt-0 mb-6">Lists</h1>
                             <ListsList />
+                            <div className="mt-auto">
+                                <hr className="my-3 border-neutral-3" />
+                                <Footer />
+                            </div>
                         </div>
                     }
                     detail={
