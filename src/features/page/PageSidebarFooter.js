@@ -1,4 +1,4 @@
-const Footer = () => (
+const PageSidebarFooter = () => (
     <footer>
         <p>
             Designed and developed by{" "}
@@ -33,4 +33,4 @@ const Footer = () => (
     </footer>
 );
 
-export default Footer;
+export default PageSidebarFooter;

@@ -46,7 +46,7 @@ class ListsList extends React.Component {
         ));
 
         return (
-            <div>
+            <nav>
                 <ul>
                     <ListCreator />
 
@@ -65,7 +65,7 @@ class ListsList extends React.Component {
                         {this.renderListManager()}
                     </ModalCard>
                 </Modal>
-            </div>
+            </nav>
         );
     }
 }
