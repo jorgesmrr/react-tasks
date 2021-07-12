@@ -4,7 +4,7 @@ A simple to-do app I made with React.
 
 ## See it working
 
-Open the [website](https://xenodochial-sinoussi-55ac44.netlify.app/).
+Open the [website](https://jorgemoreira-tasks.netlify.app/).
 
 ## What I used?
 
