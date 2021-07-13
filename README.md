@@ -1,6 +1,6 @@
 # react-tasks
 
-A simple to-do app I made with React.
+> A simple to-do app made with React.
 
 ## See it working
 
